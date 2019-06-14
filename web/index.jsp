@@ -1,7 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="entity.Feedback" %><%--
+<%@ page import="entity.Feedback" %>
+<%@ page import="entity.Phone" %><%--
   Created by IntelliJ IDEA.
   User: wLink
   Date: 3/18/2019
@@ -16,31 +17,34 @@
   </head>
   <body>
   <%
-    ArrayList<Feedback> feedbackList;
-    feedbackList = (ArrayList<Feedback>) request.getAttribute("feedback");
+    ArrayList<Phone> phoneList;
+    phoneList = (ArrayList<Phone>) request.getAttribute("phoneList");
     
-    if (feedbackList == null) {
-      feedbackList = new ArrayList<Feedback>();
+    if (phoneList == null) {
+      phoneList = new ArrayList<Phone>();
     }
   %>
   <div class="container mt-5">
-    <h2>List feedback</h2>
-    <p style="font-style: italic; color: grey">wo men bu yi yang...</p>
+    <h2 class="mb-3">List feedback</h2>
     <table class="table">
       <thead>
       <tr>
         <th>No.</th>
-        <th>Username</th>
-        <th>Feedback</th>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Description</th>
       </tr>
       </thead>
       <tbody>
       <% int i = 1; %>
-      <% for (Feedback feedback : feedbackList) { %>
+      <% for (Phone phone : phoneList) { %>
         <tr>
           <td><%= i %></td>
-          <td><%= feedback.feedback %></td>
-          <td><%= feedback.getUser().name %></td>
+          <td><%= phone.getName() %></td>
+          <td><%= phone.getBrand() %></td>
+          <td><%= phone.getPrice() %></td>
+          <td><%= phone.getDescription() %></td>
           <% i++; %>
         </tr>
       <% } %>

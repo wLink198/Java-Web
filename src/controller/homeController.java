@@ -1,6 +1,8 @@
 package controller;
 
 import entity.Feedback;
+import entity.Phone;
+import model.PhoneModel;
 import model.UserModel;
 
 import javax.servlet.ServletContext;
@@ -16,10 +18,10 @@ import java.util.List;
 public class homeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserModel us = new UserModel();
-        ArrayList<Feedback> feedbackList = us.getFeedback();
+        PhoneModel phone = new PhoneModel();
+        ArrayList<Phone> phoneList = phone.getPhone();
 
-        req.setAttribute("feedback", feedbackList);
+        req.setAttribute("phoneList", phoneList);
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
